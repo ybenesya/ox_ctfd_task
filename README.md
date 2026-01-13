@@ -19,7 +19,7 @@ AI assistance used: OpenAI Codex (Codex CLI, GPT-5).
 
 ### Install
 ```bash
-pip install -e .
+python -m pip install -e .
 ```
 
 ### Usage
