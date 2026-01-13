@@ -24,21 +24,26 @@ pip install -e .
 
 ### Usage
 ```bash
-ox-ctfd-task --token <TOKEN> --branch <MERGED_BRANCH>
+ox-ctfd-task --token <TOKEN>
 ```
 
 Example (log to file):
 ```bash
-ox-ctfd-task --token <TOKEN> --branch <MERGED_BRANCH> --log-dest file --log-file-path logs.txt
+ox-ctfd-task --token <TOKEN> --log-dest file --log-file-path logs.txt
+```
+
+Example (build commit graph):
+```bash
+ox-ctfd-task --token <TOKEN> --branch <MERGED_BRANCH>
 ```
 
 ### Flags
 | Flag | Description | Required/Optional | Default |
 | --- | --- | --- | --- |
 | `--token` | GitHub Personal Access Token. | Required | None |
-| `--branch` | Branch name (merged to main) to build a commit graph for. | Required | None |
 | `--owner` | GitHub repository owner/org. | Optional | `ybenesya` |
 | `--repo` | GitHub repository name. | Optional | `CTFd` |
+| `--branch` | Branch name (merged to main) to build a commit graph for. | Optional | `ybenesya-patch-2` |
 | `--log-dest` | Where to write logs: `stdout` or `file`. | Optional | `stdout` |
 | `--log-file-path` | Log file path (required when `--log-dest=file`). | Optional | None |
 | `--debug` | Enable debug logging. | Optional | `false` |

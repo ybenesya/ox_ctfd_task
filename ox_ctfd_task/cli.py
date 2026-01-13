@@ -6,6 +6,7 @@ from dataclasses import dataclass
 DEFAULT_OWNER = "ybenesya"
 DEFAULT_REPO = "CTFd"
 DEFAULT_DOT_OUT_PATH = "graph.dot"
+DEFAULT_BRANCH = "ybenesya-patch-2"
 
 
 @dataclass(frozen=True)
@@ -13,7 +14,7 @@ class CliArgs:
     token: str
     owner: str
     repo: str
-    branch: str
+    branch: str | None
     log_dest: str
     log_file_path: str | None
     debug: bool
@@ -37,6 +38,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--branch",
         help="Branch name (merged to main) to build a commit graph for (later stage).",
+        default=DEFAULT_BRANCH,
     )
 
     p.add_argument(
@@ -80,10 +82,6 @@ def parse_args(argv: list[str] | None = None) -> CliArgs:
         parser.error("--log-file-path is required when --log-dest=file")
     
     
-    if not ns.branch:
-        parser.error("Missing required argument: --branch")
-
-
     return CliArgs(
         token=ns.token,
         owner=ns.owner,
